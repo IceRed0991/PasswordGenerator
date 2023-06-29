@@ -7,9 +7,8 @@
     <link rel="reset-css" href="reset.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inconsolata:wght@600&family=Inter:wght@400;600&display=swap"
+        rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Inconsolata:wght@600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
 
@@ -30,17 +29,50 @@
                     <input type="text" name="password" id="password">
                 </div>
                 <div class="actions">
-                    <button id="copy2">C</button>
-                    <button id="renew">R</button>
+                    <button id="copy-1">
+                        <img src="copy.svg" width="42">
+                    </button>
+                    <button id="renew">
+                        <img src="renew.svg" width="42">
+                    </button>
                 </div>
+            </div>
+            <div class="security-indicator">
+                <div id="security-indicator-bar" class="bar safe" style="width: 90%"></div>
             </div>
         </section>
 
+        <section class="box customize">
+            <h3 class="title">Personalizar</h3>
+            <div class="actions">
+                <div class="password-length">
+                    <p>Tamanho: <span id="password-length-text" class="">16</span></p>
+                    <input type="range" name="password-length" id="password-length" class="slider" value="16" min="4"
+                        max="64">
+                </div>
+                <div class="config">
+                    <label class="checkbox-container">
+                        <span class="text">Maiúsculas</span>
+                        <input type="checkbox" id="uppercase-check" checked>
+                        <span class="checkmark"></span>
+                    </label>
+                    <label class="checkbox-container">
+                        <span class="text">Números</span>
+                        <input type="checkbox" id="number-check" checked>
+                        <span class="checkmark"></span>
+                    </label>
+                    <label class="checkbox-container">
+                        <span class="text">Símbolos</span>
+                        <input type="checkbox" id="symbol-check" checked>
+                        <span class="checkmark"></span>
+                    </label>
+                </div>
 
-        <input type="range" name="password-length" id="password-length" value="16" min="4" max="64">
-
-
-        <button id="copy">Copiar Senha</button>
+            </div>
+        </section>
+        <div class="submit">
+            <button id="copy-2">Copiar Senha</button>
+        </div>
     </main>
 </body>
 
@@ -71,10 +103,13 @@
     passwordLengthEL.addEventListener("input", function () {
         passwordLength = passwordLengthEL.value
         console.log(passwordLength);
+        generatePassword();
     })
 
-    const btncopy = document.querySelector("#copy");
-    btncopy.addEventListener("click", () => {
+    document.querySelector("#copy-1").addEventListener("click", () => {
+        navigator.clipboard.writeText(inputEL.value);
+    })
+    document.querySelector("#copy-2").addEventListener("click", () => {
         navigator.clipboard.writeText(inputEL.value);
     })
 
