@@ -86,7 +86,15 @@
 
 
     function generatePassword() {
-        const chars = "abcdefghjkmnopqrstuvwxyzABCDEFGHJKMNOPQRSTUVWXYZ123456789?!@#$%¨&*()[]";
+        let chars = "abcdefghjkmnopqrstuvwxyz";
+
+        const upperCaseChars = "ABCDEFGHJKMNOPQRSTUVWXYZ";
+        const numberChars="123456789";
+        const symbolChars= "?!@#$%¨&*()[]";
+
+        chars += upperCaseChars;
+        chars += numberChars;
+        chars += symbolChars;
 
         let password = ""
 
